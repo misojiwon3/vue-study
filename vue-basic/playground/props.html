@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <app-header v-bind:root-message="message"></app-header> <!-- 여기서 binding -->
+    <app-content v-bind:root-num="num"></app-content>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var appHeader = {
+      template: '<h1>{{rootMessage}}</h1>',
+      props: ['rootMessage'] // props 를 camel 로 등록했으면 html은 kebab으로 등록해야 함(root-message)
+    }
+
+    var appContent = {
+      template: '<div>{{rootNum}}</div>',
+      props: ['rootNum']
+    }
+
+    new Vue({
+      el: '#app',
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent
+      },
+      data: {
+        message: 'hi!!', // root 의 data
+        num: 10
+      }
+    })
+  </script>
+</body>
+
+</html>

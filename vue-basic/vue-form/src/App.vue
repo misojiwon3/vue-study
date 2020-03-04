@@ -1,0 +1,50 @@
+<template>
+  <form v-on:submit.prevent="submitForm">
+    <div>
+      <label for="username">id : </label>
+      <input id="username" type="text" v-model="username">
+    </div>
+    <div>
+      <label for="password">pw : </label>
+      <input id="password" type="password" v-model="password">
+    </div>
+    <button type="submit">login</button> <!-- 로그인을 누르면 새로고침이 됨 -->
+  </form>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  data: function () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    submitForm: function () {
+      // e.preventDefault(); // default 로 돌아가는 것을 막음. submit 후 새로고침 되는 것을 막음
+      console.log(this.username, this.password);
+      var url = 'https://jsonplaceholder.typicode.com/users';
+      var data = {
+        username: this.username,
+        password: this.password
+      }
+
+      axios.post(url, data)
+        .then(function(response) {
+          console.log(1);
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

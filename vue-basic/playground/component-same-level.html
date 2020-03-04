@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" class="app1">
+    <app-header v-bind:nn="number"></app-header>
+    <app-content v-on:pass="passNumToRoot"></app-content>
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    var appHeader = {
+      template: '<div>header</div>',
+      props: ['nn']
+    }
+
+    var appContent = {
+      template: `<div>content
+        <button v-on:click="passNumber">pass</button>
+          </div>`,
+      methods: {
+        passNumber: function () {
+          this.$emit('pass', 10)
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        str: 'hi',
+        number: 0
+      },
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent
+      },
+      methods: {
+        passNumToRoot: function (value) {
+          this.number = value;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

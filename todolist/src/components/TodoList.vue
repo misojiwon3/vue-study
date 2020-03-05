@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(item, index) in appTodoItems" v-bind:key="item.id" class="shadow">
+    <transition-group name="list" tag="ul">
+      <li v-for="(item, index) in appTodoItems" v-bind:key="item.item" class="shadow">
         <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted: item.completed}" v-on:click="toggleComplete(item, index)"></i>
         <span v-bind:class="{textCompleted: item.completed}">{{item.item}}</span>
         <span class="removeBtn" v-on:click="removeTodo(item, index)">
           <i class="fas fa-trash-alt" ></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -59,10 +59,11 @@ li {
   margin-left: auto;
   color: #de4343;
 }
+
 /* transition css */
 .list-enter-active,
 .list-leave-active {
-  transition: all 1s;
+  transition: all .5s;
 }
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;

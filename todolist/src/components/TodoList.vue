@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) in todoItems" v-bind:key="item" class="shadow">
+      <li v-for="(item, index) in appTodoItems" v-bind:key="item.id" class="shadow">
         <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted: item.completed}" v-on:click="toggleComplete(item, index)"></i>
         <span v-bind:class="{textCompleted: item.completed}">{{item.item}}</span>
         <span class="removeBtn" v-on:click="removeTodo(item, index)">
@@ -14,34 +14,13 @@
 
 <script>
 export default {
-  created() {
-    // vue life cycle : created, mounted, updated, destroyed
-    console.log("created");
-    if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
-    }
-  },
-  data() {
-    return {
-      todoItems: []
-    };
-  },
+  props: ['appTodoItems'],
   methods: {
     removeTodo: function(item, index) {
-      console.log(item, index);
-      localStorage.removeItem(item);
-      this.todoItems.splice(index, 1);
+      this.$emit('removeTodoItem', item, index);
     },
     toggleComplete: function(item, index) {
-      item.completed = !item.completed;
-      localStorage.removeItem(item.item);
-      localStorage.setItem(item.item, JSON.stringify(item))
-      console.log(index);
+      this.$emit('toggleTodoItem', item, index);
     }
   }
 };

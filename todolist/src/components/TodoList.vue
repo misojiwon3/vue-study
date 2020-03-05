@@ -16,10 +16,10 @@
 export default {
   props: ['appTodoItems'],
   methods: {
-    removeTodo: function(item, index) {
+    removeTodo(item, index) {
       this.$emit('removeTodoItem', item, index);
     },
-    toggleComplete: function(item, index) {
+    toggleComplete(item, index) {
       this.$emit('toggleTodoItem', item, index);
     }
   }

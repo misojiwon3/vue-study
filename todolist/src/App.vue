@@ -17,7 +17,7 @@ export default {
   created() {
     // vue life cycle : created, mounted, updated, destroyed
     if (localStorage.length > 0) {
-      for (var i = 0; i < localStorage.length; i++) {
+      for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
           this.todoItems.push(
             JSON.parse(localStorage.getItem(localStorage.key(i)))
@@ -38,21 +38,21 @@ export default {
     TodoFooter
   },
   methods: {
-    addItem: function(item) {
-      var obj = { completed: false, item: item };
+    addItem(item) {
+      const obj = { completed: false, item: item };
       localStorage.setItem(item, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    removeItem: function(item, index) {
+    removeItem(item, index) {
       localStorage.removeItem(item.item);
       this.todoItems.splice(index, 1);
     },
-    toggleItem: function(item, index) {
+    toggleItem(item, index) {
       this.todoItems[index].completed = !this.todoItems[index].completed
       localStorage.removeItem(item.item);
       localStorage.setItem(item.item, JSON.stringify(item))
     },
-    clearItems: function() {
+    clearItems() {
       localStorage.clear();
       this.todoItems = [];
     }

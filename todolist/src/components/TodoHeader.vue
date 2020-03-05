@@ -4,12 +4,6 @@
   </header>
 </template>
 
-<script>
-export default {
-  // javascript
-}
-</script>
-
 <style scoped> /* 해당 파일(component)에서만 적용되도록 scoped 설정 */
 h1 {
   color: #2F3B52;

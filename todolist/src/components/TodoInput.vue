@@ -12,15 +12,18 @@ export default {
   data: function() {
     return {
       newTodoItem: ""
-    }
+    };
   },
   methods: {
     addTodo: function() {
-      localStorage.setItem(this.newTodoItem, this.newTodoItem)
-      this.clearInput()
+      if (this.newTodoItem !== "") {
+        var obj = { completed: false, item: this.newTodoItem };
+        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.clearInput();
+      }
     },
-    clearInput: function () {
-      this.newTodoItem = ''
+    clearInput: function() {
+      this.newTodoItem = "";
     }
   }
 };
@@ -42,7 +45,7 @@ input:focus {
 }
 .addContainer {
   float: right;
-  background: linear-gradient(to right, #6478FB, #8763FB);
+  background: linear-gradient(to right, #6478fb, #8763fb);
   display: block;
   width: 3rem;
   border-radius: 0 5px 5px 0;

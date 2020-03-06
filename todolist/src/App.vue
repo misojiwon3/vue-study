@@ -1,9 +1,10 @@
 <template>
   <div id="app">
+    <!-- 하위 컴포넌트에서 올린 이벤트의 데이터들은 params로 입력하지 않아도 알아서 들어간다 -->
     <todo-header></todo-header>
-    <todo-input v-on:addTodoItem="addItem"></todo-input> <!-- 하위 컴포넌트에서 올린 이벤트의 데이터들은 params로 입력하지 않아도 알아서 들어간다 -->
-    <todo-list v-bind:appTodoItems="todoItems" v-on:removeTodoItem="removeItem" v-on:toggleTodoItem="toggleItem"></todo-list>
-    <todo-footer v-on:clearTodoItems="clearItems"></todo-footer>
+    <todo-input></todo-input>
+    <todo-list></todo-list>
+    <todo-footer></todo-footer>
   </div>
 </template>
 
@@ -14,48 +15,11 @@ import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
 
 export default {
-  created() {
-    // vue life cycle : created, mounted, updated, destroyed
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(
-            JSON.parse(localStorage.getItem(localStorage.key(i)))
-          );
-        }
-      }
-    }
-  },
-  data() {
-    return {
-      todoItems: []
-    };
-  },
   components: {
     TodoHeader,
     TodoInput,
     TodoList,
     TodoFooter
-  },
-  methods: {
-    addItem(item) {
-      const obj = { completed: false, item: item };
-      localStorage.setItem(item, JSON.stringify(obj));
-      this.todoItems.push(obj);
-    },
-    removeItem(item, index) {
-      localStorage.removeItem(item.item);
-      this.todoItems.splice(index, 1);
-    },
-    toggleItem(item, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed
-      localStorage.removeItem(item.item);
-      localStorage.setItem(item.item, JSON.stringify(item))
-    },
-    clearItems() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
   }
 };
 </script> 

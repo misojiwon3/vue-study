@@ -39,7 +39,7 @@ export default {
         this.showModal = !this.showModal;
       }
     },
-    clearInput() {
+     clearInput() {
       this.newTodoItem = "";
     }
   },

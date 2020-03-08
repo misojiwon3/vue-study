@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <gugudan></gugudan>
+  </div>
+
+  <script>
+    const min = 1;
+    const max = 10;
+
+    Vue.component('Gugudan', {
+      template: `<div>
+        <div>
+          {{ num1 }} x {{ num2 }} = ?
+        </div>
+        <input type="text" v-model="input" autofocus>
+        <button v-on:click="onClick">입력</button>
+        <div>{{result}}</div>
+      </div>`, 
+      created() {
+        this.resetNumbers()
+      },
+      data() {
+        return {
+          input: '',
+          num1: 0,
+          num2: 0,
+          result: '시작'
+        }
+      },
+      methods: {
+        getRandomNumber(min, max) {
+          return Math.floor(Math.random() * (max - min)) + min;
+        },
+        resetNumbers: function () {
+          this.num1 = this.getRandomNumber(min, max)
+          this.num2 = this.getRandomNumber(min, max)
+        },
+        calculateNumbers: function (number) {
+          if (!isNaN(number)) {
+            return this.num1 * this.num2 === number ? '정답' : '오답'
+          } else {
+            return '숫자를 입력하세요'
+          }
+        },
+        onClick: function () {
+          const n = Number(this.input);
+
+          this.result = this.calculateNumbers(n);
+          this.resetNumbers();
+          this.input = '';
+        }
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      components: {
+        // Gugudan
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,5 @@
 <template>
-	<div>
-		sign up
-	</div>
+	<div>Page Not Found</div>
 </template>
 
 <script>

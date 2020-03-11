@@ -72,6 +72,9 @@ a.logo {
 	top: 0;
 	width: 100%;
 }
+.logout-button {
+	font-size: 14px;
+}
 a.router-link-exact-active {
 	color: white;
 	font-weight: bold;

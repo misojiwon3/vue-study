@@ -30,4 +30,9 @@ function fetchPosts() {
 	return request.get('posts');
 }
 
-export { registerUser, loginUser, fetchPosts };
+// 노트 생성
+function createPost(postData) {
+	return request.post('posts', postData);
+}
+
+export { registerUser, loginUser, fetchPosts, createPost };

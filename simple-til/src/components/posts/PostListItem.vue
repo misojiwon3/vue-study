@@ -27,7 +27,7 @@ export default {
 	methods: {
 		moveToUpdatePage() {
 			console.log('update');
-			this.$router.push(`/post/${this.item._id}`);
+			this.$router.push(`/posts/${this.item._id}`);
 		},
 		async deleteItem() {
 			try {

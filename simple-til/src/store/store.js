@@ -29,6 +29,9 @@ export default new Vuex.Store({
 		},
 		clearUsername(state) {
 			state.username = '';
+		},
+		clearToken(state) {
+			state.token = '';
 		}
 	},
 	actions: {

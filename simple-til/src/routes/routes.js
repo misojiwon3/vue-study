@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import LoginPage from '@/views/LoginPage.vue'
 // import SignUpPage from '@/views/SignupPage.vue'
-import UserPage from '@/pages/UserPage.vue'
+import UserPage from '@/components/_pages/UserPage.vue'
 import store from '../store/store';
 
 Vue.use(VueRouter) // 플러그인을 초기화하기 위한 코드

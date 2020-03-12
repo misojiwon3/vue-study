@@ -3,7 +3,7 @@
 		<div class="form-wrapper form-wrapper-sm">
 			<form @submit.prevent="submitForm" class="form">
 				<div>
-					<label for="username">id:</label>
+					<label for="username">ID: </label>
 					<input id="username" type="text" v-model="username" />
 					<p class="validation-text">
 						<span class="warning" v-if="!isUsernameValid && username">
@@ -12,7 +12,7 @@
 					</p>
 				</div>
 				<div>
-					<label for="password">pw:</label>
+					<label for="password">Password: </label>
 					<input id="password" type="text" v-model="password" />
 				</div>
 				<button

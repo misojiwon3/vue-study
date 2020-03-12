@@ -13,13 +13,13 @@ export default {
 	data() {
 		return {
 			open: false,
-			message: '',
+			message: ''
 		};
 	},
 	computed: {
 		toastAnimationClass() {
 			return this.open ? 'show' : null;
-		},
+		}
 	},
 	methods: {
 		showToast(message) {
@@ -30,14 +30,14 @@ export default {
 		},
 		hideToast() {
 			this.open = false;
-		},
+		}
 	},
 	created() {
 		bus.$on('show:toast', this.showToast);
 	},
 	beforeDestroy() {
 		bus.$off('show:toast', this.showToast);
-	},
+	}
 };
 </script>
 

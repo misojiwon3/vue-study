@@ -17,25 +17,25 @@ const router = new VueRouter({
     },
     {
       path: '/login',
-      component: () => import('@/pages/LoginPage.vue') // dynamic import 기능, code splitting
+      component: () => import('@/components/_pages/LoginPage.vue') // dynamic import 기능, code splitting
     },
     {
       path: '/signup',
-      component: () => import('@/pages/SignupPage.vue')
+      component: () => import('@/components/_pages/SignupPage.vue')
     },
     {
       path: '/main',
-      component: () => import('@/pages/MainPage.vue'),
+      component: () => import('@/components/_pages/MainPage.vue'),
       meta: { auth: true }
     },
     {
       path: '/create',
-      component: () => import('@/pages/PostAddPage.vue'),
+      component: () => import('@/components/_pages/PostAddPage.vue'),
       meta: { auth: true }
     },
     {
       path: '/posts/:id',
-      component: () => import('@/pages/PostUpdatePage.vue'),
+      component: () => import('@/components/_pages/PostUpdatePage.vue'),
       meta: { auth: true }
     },
     {
@@ -44,7 +44,7 @@ const router = new VueRouter({
     },
     {
       path: '*',
-      component: () => import('@/pages/errors/NotFoundPage.vue')
+      component: () => import('@/components/_common/errors/NotFoundPage.vue')
     }
   ]
 });

@@ -4,15 +4,15 @@
 			<!-- .prevent : submit의 기본 동작인 새로고침을 막음 -->
 			<form @submit.prevent="submitForm" class="form">
 				<div>
-					<label for="username">id: </label>
+					<label for="username">Username: </label>
 					<input id="username" type="text" v-model="username" />
 				</div>
 				<div>
-					<label for="password">pw: </label>
+					<label for="password">Password: </label>
 					<input id="password" type="text" v-model="password" />
 				</div>
 				<div>
-					<label for="nickname">nickname: </label>
+					<label for="nickname">Nickname: </label>
 					<input id="nickname" type="text" v-model="nickname" />
 				</div>
 				<button
@@ -64,6 +64,7 @@ export default {
 			const { data } = await registerUser(userData);
 			this.logMessage = `${data.username}님이 가입했습니다.`;
 			this.initForm();
+			this.$router.push('/login');
 		}
 	}
 };

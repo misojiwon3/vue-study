@@ -47,12 +47,14 @@ export default {
 	methods: {
 		async submitForm() {
 			try {
-				const id = this.$route.params.id;
-				await updatePost(id, {
-					title: this.title,
-					contents: this.contents
-				});
-				this.$router.push('/main');
+				if (confirm('수정하시겠습니까?')) {
+					const id = this.$route.params.id;
+					await updatePost(id, {
+						title: this.title,
+						contents: this.contents
+					});
+					this.$router.push('/main');
+				}
 			} catch (error) {
 				console.log(error);
 			}

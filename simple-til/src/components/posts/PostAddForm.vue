@@ -4,11 +4,11 @@
 		<div class="form-wrapper">
 			<form class="form" @submit.prevent="submitForm">
 				<div>
-					<label for="title">title</label>
+					<label for="title">Title: </label>
 					<input id="title" type="text" v-model="title" />
 				</div>
 				<div>
-					<label for="contents">contents</label>
+					<label for="contents">Contents: </label>
 					<textarea id="contents" type="text" rows="5" v-model="contents" />
 					<p class="validation-text warning" v-if="!isContentsValid">
 						Contents must be less than 200

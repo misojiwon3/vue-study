@@ -1,38 +1,19 @@
 import axios from 'axios';
-import { setInterceptors } from './common/interceptors';
+import { setInterceptors } from './common/interceptors.js';
 
-// 액시오스 초기화 함수
-function createInstance() {
-	const instance = axios.create({
+function createRequest() {
+	const request = axios.create({
 		baseURL: process.env.VUE_APP_API_URL
 	});
-	return setInterceptors(instance);
+	return request;
 }
 
-const request = createInstance();
+// 액시오스 초기화 함수
+function createRequestWithToken() {
+	return setInterceptors(createRequest());
+}
+
+export const request = createRequest();
+export const requestWithToken = createRequestWithToken();
 
 // axios.defaults.baseURL = 'http://localhost:3000';
-
-// 회원가입
-function registerUser(userData) {
-	// const url = 'http://localhost:3000/signup';
-	// return axios.post('signup', userData);
-	return request.post('signup', userData);
-}
-
-// 로그인
-function loginUser(loginData) {
-	return request.post('login', loginData);
-}
-
-// 노트 조회
-function fetchPosts() {
-	return request.get('posts');
-}
-
-// 노트 생성
-function createPost(postData) {
-	return request.post('posts', postData);
-}
-
-export { registerUser, loginUser, fetchPosts, createPost };

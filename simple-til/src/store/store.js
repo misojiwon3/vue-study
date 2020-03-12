@@ -6,7 +6,7 @@ import {
 	saveAuthToCookie,
 	saveUserToCookie
 } from '@/utils/cookies.js';
-import { loginUser, createPost } from '@/api/api.js';
+import { loginUser } from '@/api/auth.js';
 
 Vue.use(Vuex);
 
@@ -39,10 +39,6 @@ export default new Vuex.Store({
 			saveAuthToCookie(data.token);
 			saveUserToCookie(data.user.username);
 			return data; // data가 필요할 수 있으므로 명시적으로 넘겨줌
-		},
-		async CREATE_POST(state, postData) {
-			const { data } = await createPost(postData);
-			return data;
 		}
 	}
 });

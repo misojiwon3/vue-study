@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { registerUser } from '@/api/api.js';
+import { registerUser } from '@/api/auth.js';
 import { validateEmail } from '@/utils/validation.js';
 
 export default {

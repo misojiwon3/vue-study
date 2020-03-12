@@ -27,8 +27,12 @@ export default new VueRouter({
       component: () => import('@/pages/SignupPage.vue')
     },
     {
-      path: '/add',
+      path: '/create',
       component: () => import('@/pages/PostAddPage.vue')
+    },
+    {
+      path: '/post/:id',
+      component: () => import('@/pages/PostUpdatePage.vue')
     },
     {
       path: '/user/:id', 

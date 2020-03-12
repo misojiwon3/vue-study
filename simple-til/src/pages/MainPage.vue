@@ -8,11 +8,12 @@
 					v-for="item in postItems"
 					:key="item._id"
 					:item="item"
+					@refresh="fetchPosts"
 				></post-list-item>
 			</ul>
 		</div>
-		<router-link to="/add" class="create-button">
-			<i class="ion-md=add"></i>
+		<router-link to="/create" class="create-button">
+			<i class="ion-md-add"></i>
 		</router-link>
 	</div>
 </template>
@@ -20,7 +21,7 @@
 <script>
 import PostListItem from '@/components/posts/PostListItem.vue';
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
-import { fetchPosts } from '@/api/api.js';
+import { fetchPosts } from '@/api/posts.js';
 
 export default {
 	data() {

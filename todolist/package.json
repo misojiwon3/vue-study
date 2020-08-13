@@ -11,7 +11,7 @@
     "core-js": "^3.6.4",
     "js-yaml": "^3.13.1",
     "mem": "^6.0.1",
-    "serialize-javascript": "^3.0.0",
+    "serialize-javascript": "^3.1.0",
     "vue": "^2.6.11",
     "vuex": "^3.1.2",
     "webpack-bundle-analyzer": "^3.6.0"
